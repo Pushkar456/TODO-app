@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+    <div class="main">
+        <!-- <div class="blank"></div> -->
+        <div class="input-field--main">
+            <h1 class="title">PR TODO - List app </h1>
+            <form action="/submit" method="post" class="input-field">
+                <input type="text" id="task-input" placeholder="What would you like to do?" name="task" />
+                <input type="submit" id="submit-btn" value="Submit" />
+            </form>
+        </div>
+        <!-- <hr/> -->
+        <div class="task-container">
+            <ul>
+                <% if (locals.tasks) { for (let i=0; i < tasks.length-1; i++) { %>
+                    <li>
+                        <div class="task">
+                            <div class="task-title">
+                                <h3>
+                                    <%= tasks[i] %>
+                                </h3>
+                            </div>
+                            <div class="task-btn">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="task-status-checkbox" name="checkMark">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="delete-btn"><i class="fa-regular fa-trash-can"></i></div>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
+
+                        <% } else { %>
+                            <p>No task commited yet!!!!</p>
+                            <% } %>
+            </ul>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
